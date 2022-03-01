@@ -34,14 +34,14 @@ EJS:
 ```
 CPU/GPU, what do they do?
 
-the cpu determines how long the initial loading bar lasts
+the cpu determines how long the initial loading bar lasts<br>
 the gpu determines the resolution of the screen
 
 TODO:
-QB-Target integration to allow all arcade machines to work
-Freeze Player to allow gamepad use without punching and moving in GTA
-Add some animations to show player is using arcade machine / computer
-Fix non quick save states (maybe)
+- [ ] QB-Target integration to allow all arcade machines to work
+- [ ] Freeze Player to allow gamepad use without punching and moving in GTA
+- [ ] Add some animations to show player is using arcade machine / computer
+- [ ] Fix non quick save states (maybe)
 
 Dependencies
 
