@@ -43,6 +43,11 @@ TODO:
 - [ ] Add some animations to show player is using arcade machine / computer
 - [ ] Fix non quick save states (maybe)
 
+KNOWN ISSUES:
+
+UI button to load state will softlock the game requiring an F8 quit.
+Gamepad controls character in GTA and emulator at the same time.
+
 Dependencies
 
 https://github.com/d3st1nyh4x/MenuAPI (fork fixed for large lists)
