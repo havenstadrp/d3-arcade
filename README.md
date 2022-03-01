@@ -1,5 +1,5 @@
 ## d3-arcade
-# HEAVILY based on [https://github.com/Xogy/rcore_arcade](rcore_arcade)
+# HEAVILY based on [rcore_arcade](https://github.com/Xogy/rcore_arcade)
 
 WIP, QBCore version of rcore_arcade
 
