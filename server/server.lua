@@ -1,20 +1,12 @@
-ESX = nil
-TriggerEvent("esx:getSharedObject", function(esx) ESX = esx end)
+QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterNetEvent("rcore_arcade:buyTicket")
 AddEventHandler("rcore_arcade:buyTicket", function(ticket)
-    if ESX then
-        local data = Config.ticketPrice[ticket]
-        local xPlayer = ESX.GetPlayerFromId(source);
-        local moneyPlayer = xPlayer.getMoney();
-
-        if moneyPlayer > data.price then
-            xPlayer.removeMoney(data.price);
-            TriggerClientEvent("rcore_arcade:ticketResult", source, ticket);
-        else
-            TriggerClientEvent("rcore_arcade:nomoney", source);
-        end
+    local data = Config.ticketPrice[ticket]
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player.Functions.RemoveMoney("cash", data.price, "arcade") then
+        TriggerClientEvent("rcore_arcade:ticketResult", source, ticket);
     else
-        TriggerClientEvent("rcore_arcade:ticketResult", source, _U("gold"));
+        TriggerClientEvent("rcore_arcade:nomoney", source);
     end
 end)
