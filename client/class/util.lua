@@ -120,7 +120,7 @@ end
 function openComputerMenu(listGames, computer_)
     local computer = computer_
     local index = 0
-    if not gotTicket and computer.isInGamingHouse then
+    if Config.enableGameHouse and not gotTicket and computer.isInGamingHouse then
         showNotification(_U("need_to_buy_ticket"))
         return
     end

@@ -61,6 +61,8 @@ Config.Arcade = {
     },--]]
 }
 
+-- "single use" prices to be used on non gamehouse machines (e,g props in houses, etc, via qb-target. check readme.md)
+Config.singleUsePrice = 500
 -- ticket price, and time in arcade.
 Config.ticketPrice = {
     [_U("bronz")] = {
