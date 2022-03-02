@@ -45,8 +45,12 @@ TODO:
 
 KNOWN ISSUES:
 
-UI button to load state will softlock the game requiring an F8 quit.
+UI button to load state will softlock the game requiring an F8 quit.<br>
 Gamepad controls character in GTA and emulator at the same time.
+
+MISC:
+
+/testgames opens a "super computer" with all games for testing purposes, restricted to admins.
 
 Dependencies
 
