@@ -20,7 +20,7 @@ DOSBOX:
         -- this is the name in the menu/ game list
         name = "Duke Nukem 3D", 
         -- link to msdos page, link to rom, and executable (in this zip, there is an EXE called DUKE3D which starts the game. This may be a BAT in some cases)
-        link = string.format("nui://rcore_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/duke3d.zip", "./DUKE3D.EXE"),
+        link = string.format("nui://d3-arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/duke3d.zip", "./DUKE3D.EXE"),
     }
 ```
 EJS:
@@ -29,7 +29,7 @@ EJS:
         -- this is the name in the menu/ game list
         name = "Contra III",
         -- link to ejs page, link to rom, core, uniquename, and unique id (for net play)
-        link = string.format("nui://rcore_arcade/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
+        link = string.format("nui://d3-arcade/html/ejs.html?url=%s&params=%s&name=%s&id=%s", "https://static.emulatorgames.net/roms/super-nintendo/Contra%20III%20-%20The%20Alien%20Wars%20(U)%20[!].zip", "snes", "Contraiii-snes", "4205"),
     },
 ```
 CPU/GPU, what do they do?

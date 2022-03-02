@@ -19,7 +19,7 @@ function playerBuyTicketMenu()
     for k, v in pairs(Config.ticketPrice) do
         index = index + 1
         ticketMenu.AddItem(index, _U("ticket_label", k) .. " <span style='color: green;'>$" .. v.price .. "</span>", function()
-            TriggerServerEvent("rcore_arcade:buyTicket", k)
+            TriggerServerEvent("d3-arcade:buyTicket", k)
             ticketMenu.Destroy()
         end)
     end
