@@ -24,41 +24,25 @@ Config.Arcade = {
             shortRange = true,
             enable = true,
         },
-        marker = {
-            markerPosition = vector3(-1082.12, -247.57, 37.2),
-            markerType = 23,
-            options = {
-                scale = { x = 1.0, y = 1.0, z = 1.0 },
-                color = { r = 255, g = 255, b = 255, a = 125 },
-            }
-        },
     },
-        -- GABZ ARCADE!!!!!
+            -- GABZ ARCADE!!!!!
     --[[
     {
         NPC = {
-            position = vector3(-1659.14, -1062.72, 12.17),
+            position = vector3(-1659.14, -1062.72, 11.17),
             heading = 226.17,
             model = "ig_claypain",
         },
         blip = {
-            position = vector3(-1082.12, -247.57, 36.8),
+            position = vector3(-1659.14, -1062.72, 11.17),
             blipId = 521,
             scale = 1.0,
             color = 0,
-            name = "Gabz Arcade",
+            name = "Arcade house",
             shortRange = true,
-            enable = false,
+            enable = true,
         },
-        marker = {
-            markerPosition = vector3(-1649.2, -1062.78, 12.17),
-            markerType = 23,
-            options = {
-                scale = { x = 1.0, y = 1.0, z = 1.0 },
-                color = { r = 255, g = 255, b = 255, a = 125 },
-            }
-        },
-    },
+    }, 
             -- FREE ARCADE!!!!! https://forum.cfx.re/t/free-mlo-arcade-bar-interior/4808151
     {
         NPC = {
@@ -176,7 +160,7 @@ Config.RetroMachine = {
         name = "Pokemon Ruby",
         link = string.format("nui://d3-arcade/html/ejs.html?url=%s&params=%s&name=%s&id=%s&bios=%s", "https://static.emulatorgames.net/roms/gameboy-advance/Pokemon%20-%20Ruby%20Version%20(U)%20(V1.1).zip", "gba", "PokemonRuby-gba", "4203", "https://phoenixnap.dl.sourceforge.net/project/gameboid/gba_bios907607290.bin"),
     },
-    -- you may need to encode characters such as "&" in urls, or the query parser might get confused.
+        -- you may need to encode characters such as "&" in urls, or the query parser might get confused.
     {
         name = "Kirby & The Amazing Mirror",
         link = string.format("nui://d3-arcade/html/ejs.html?url=%s&params=%s&name=%s&id=%s&bios=%s", "https://static.emulatorgames.net/roms/gameboy-advance/Kirby%20%26%20The%20Amazing%20Mirror%20(U).zip", "gba", "KirbyTheAmazingMirror-gba", "4204", "https://phoenixnap.dl.sourceforge.net/project/gameboid/gba_bios907607290.bin"),
@@ -236,6 +220,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1063.7, -246.7, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -244,6 +229,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1060.2, -244.85, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -252,6 +238,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1055.7, -246.12, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -260,6 +247,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1053.96, -241.8, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -268,6 +256,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1056.14, -243.42, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -276,6 +265,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1050.76, -240.9, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -284,6 +274,7 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1050.03, -243.51, 44.5),
+        seatHash = 536071214,
     },
     {
         -- if false player dont need a ticket to play on this computer.
@@ -292,5 +283,6 @@ Config.computerList = {
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
         position = vector3(-1062.44, -248.98, 44.5),
+        seatHash = 536071214,
     },
 }

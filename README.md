@@ -1,7 +1,7 @@
 ## d3-arcade
 # HEAVILY based on [rcore_arcade](https://github.com/Xogy/rcore_arcade)
 
-WIP, QBCore version of rcore_arcade
+QBCore Arcade System
 
 This fork features small upgrades and framework dependent changes to improve on the original rcore_arcade.
 
@@ -39,9 +39,8 @@ the gpu determines the resolution of the screen
 
 TODO:
 - [x] QB-Target integration to allow all arcade machines to work
-- [ ] Freeze Player to allow gamepad use without punching and moving in GTA
-- [ ] Add some animations to show player is using arcade machine / computer
-- [ ] Fix non quick save states (maybe)
+- [x] Freeze Player to allow gamepad use without punching and moving in GTA
+- [x] Add some animations to show player is using arcade machine / computer
 
 KNOWN ISSUES:
 
@@ -54,5 +53,5 @@ MISC:
 
 Dependencies
 
-QB-Target
+QB-Target<br>
 https://github.com/d3st1nyh4x/MenuAPI (fork fixed for large lists)

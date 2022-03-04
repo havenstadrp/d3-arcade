@@ -16,10 +16,23 @@ AddEventHandler("d3-arcade:nomoney", function()
     showNotification(_U("not_enough_money"))
 end)
 
+RegisterNetEvent('d3-arcade:exit', function()
+    if usingComputer then
+        SendNUIMessage({
+            type = "off",
+            game = "",
+        })
+        SetNuiFocus(false, false)
+        local ped = PlayerPedId()
+        EnableAllControlActions(0)
+        EnableAllControlActions(1)
+        EnableAllControlActions(2)
+        FreezeEntityPosition(ped, false)
+        ClearPedTasks(ped)
+        usingComputer = false
+    end
+end)
+
 RegisterNUICallback('exit', function()
-    SendNUIMessage({
-        type = "off",
-        game = "",
-    })
-    SetNuiFocus(false, false)
+    TriggerEvent('d3-arcade:exit')
 end)

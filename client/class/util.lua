@@ -25,11 +25,9 @@ function playerBuyTicketMenu()
     end
 
     ticketMenu.On("selectitem", function(index)
-        print(index, "joujou")
     end)
 
     ticketMenu.On("close", function()
-        print("mg funguju")
     end)
 
     ticketMenu.Open()
@@ -144,6 +142,80 @@ function openComputerMenu(listGames, computer_)
         index = index + 1
         print(index, value.name)
         gameMenu.AddItem(index, value.name, function()
+            gameMenu.Close()
+            local ped = PlayerPedId()
+            local pos = GetEntityCoords(ped)
+            local rot = GetEntityRotation(ped)
+            local closestDistance = 6
+            local closestPos = nil
+            local closestObj = nil
+            if computer.seatHash ~= nil then
+                local obj = GetClosestObjectOfType(pos.x, pos.y, pos.z, 10.0, computer.seatHash, false, true, true)
+                if obj ~= nil and obj ~= 0 then
+                    local objPos = GetEntityCoords(obj)
+                    closestPos = objPos
+                    closestObj = obj
+                    local dict = "amb@prop_human_seat_computer@male@base"
+                    RequestAnimDict(dict)
+                    while not HasAnimDictLoaded(dict) do 
+                        Citizen.Wait(100)
+                    end
+                    local rotation = GetEntityRotation(closestObj)
+                    local targetPos = closestPos + vector3(0,0, 0.5)
+                    DisableCamCollisionForEntity(closestObj)
+                    FreezeEntityPosition(ped, true)
+                    TaskPlayAnimAdvanced(ped, dict, "base", targetPos.x, targetPos.y, targetPos.z, rotation.x, rotation.y, rotation.z + 180, 1.0, 1.0, -1, 1, 0.0, 0, 0)
+                    Wait(3000)
+                end
+            else
+                local closestHash = nil
+                for i = 1, #Config.ArcadeModels do
+                    local hash = Config.ArcadeModels[i]
+                    local obj = GetClosestObjectOfType(pos.x, pos.y, pos.z, 10.0, hash, false, true, true)
+                    if obj ~= nil and obj ~= 0 then
+                        local objPos = GetEntityCoords(obj)
+                        local distance = Absf(#(objPos - pos))
+                        if distance < closestDistance then
+                            closestDistance = distance
+                            closestPos = objPos
+                            closestObj = obj
+                            closestHash = hash
+                        end
+                    end
+                end
+                if closestObj ~= nil then
+                    local dict = "anim_casino_a@amb@casino@games@arcadecabinet@maleright"
+                    RequestAnimDict(dict)
+                    while not HasAnimDictLoaded(dict) do 
+                        Citizen.Wait(100)
+                    end
+                    local heading = GetEntityHeading(closestObj)
+                    local forward, right, _, _ = GetEntityMatrix(closestObj)
+                    local targetPos = closestPos + (forward * - 0.8) + (right * - 0.01)
+                    if closestHash == -1991361770 then -- (qub3d machine) 2 joysticks instead of 1...
+                        targetPos = targetPos + (right * - 0.18)
+                    end
+                    local sequence = OpenSequenceTask()
+                    TaskPedSlideToCoord(0, targetPos.x, targetPos.y, targetPos.z, heading, 1.0)
+                    TaskPlayAnim(0, dict, "insert_coins", 8.0, 8.0, -1, 0, 0, false, false, false)
+                    TaskPlayAnim(0, dict, "playidle_v2", 8.0, 8.0, -1, 1, 0, false, false, false)
+                    CloseSequenceTask(sequence)
+                    TaskPerformSequence(ped, sequence)
+                    ClearSequenceTask(sequence)
+                    Wait(GetAnimDuration(dict, "insert_coins") * 1000)
+                end
+            end
+            usingComputer = true
+            CreateThread(function()
+                while usingComputer do
+                        -- disable all controls while in game
+                        -- prevents gamepads from controlling gta character
+                        Wait(0)   
+                        DisableAllControlActions(0)
+                        DisableAllControlActions(1)
+                        DisableAllControlActions(2)
+                end
+            end)
             SendNUIMessage({
                 type = "on",
                 game = value.link,
@@ -151,7 +223,6 @@ function openComputerMenu(listGames, computer_)
                 cpu = computer.computerCPU
             })
             SetNuiFocus(true, true)
-            gameMenu.Close()
         end)
     end
 

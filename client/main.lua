@@ -6,6 +6,7 @@ MenuAPI = exports.MenuAPI
 -- variables for arcade and time left
 -------------------
 gotTicket = false
+usingComputer = false
 
 minutes = 0
 seconds = 0
@@ -24,12 +25,7 @@ function TimerThread()
             if hasPlayerRunOutOfTime() then
                 showNotification(_U("ticket_expired"))
                 gotTicket = false
-
-                SendNUIMessage({
-                    type = "off",
-                    game = "",
-                })
-                SetNuiFocus(false, false)
+                TriggerEvent('d3-arcade:exit')                
             end
 
             countTime()
