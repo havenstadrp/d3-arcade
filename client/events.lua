@@ -8,6 +8,7 @@ AddEventHandler("d3-arcade:ticketResult", function(ticket)
 
     -- Tell the script that player has Ticket and can enter.
     gotTicket = true
+    CreateThread(TimerThread)
 end)
 
 RegisterNetEvent("d3-arcade:nomoney")

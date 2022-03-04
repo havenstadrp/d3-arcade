@@ -17,7 +17,7 @@ end
 exports('doesPlayerHaveTicket', doesPlayerHaveTicket)
 
 --count time
-Citizen.CreateThread(function()
+function TimerThread()
     while true do
         Citizen.Wait(1000)
         if gotTicket then
@@ -36,38 +36,65 @@ Citizen.CreateThread(function()
             displayTime()
         end
     end
-end)
+end
 
+local retrocomputer = {
+    isInGamingHouse = true,
+    computerType = Config.RetroMachine,
+    computerGPU = Config.GPUList[2],
+    computerCPU = Config.CPUList[2],
+}
 --create npc, blip, marker
 Citizen.CreateThread(function()
+    if Config.ArcadeModels ~= nil then
+        local optionLabel = "Play Arcade"
+        if Config.enableGameHouse then
+            optionLabel = "Play Arcade for $" .. Config.singleUsePrice
+        end
+        exports['qb-target']:AddTargetModel(Config.ArcadeModels, {
+            options = {
+                {
+                    type = "server",
+                    event = "d3-arcade:singleUse",
+                    icon = "fas fa-gamepad",
+                    label = optionLabel,
+                    canInteract = function() return not gotTicket end
+                },
+                {
+                    icon = "fas fa-gamepad",
+                    label = "Play Arcade (Ticket)",
+                    action = function() openComputerMenu(retrocomputer.computerType, retrocomputer) end,
+                    canInteract = function() return gotTicket end,
+                },
+            },
+            distance = 2.5,
+        })
+    end
     for k, v in pairs(Config.Arcade) do
-        local newPos = v.marker.markerPosition - vector3(0, 0, 0.4)
-        local computerMarker = createMarker()
-
-        computerMarker.setKeys({38})
-
-        computerMarker.setRenderDistance(10)
-        computerMarker.setPosition(newPos)
-
-        computerMarker.render()
-
-        computerMarker.setColor(v.marker.options.color)
-        computerMarker.setScale(v.marker.options.scale)
-        computerMarker.setType(v.marker.markerType)
-
-        computerMarker.on('enter', function()
-            showHelpNotification(_U("open_ticket_menu"))
-        end)
-        computerMarker.on('leave', function()
-            MenuAPI:CloseAll()
-        end)
-        computerMarker.on('key', function()
-            if gotTicket == false then
-                playerBuyTicketMenu()
-            else
-                returnTicketMenu()
-            end
-        end)
+        local npcId = "ComputerNPC-" .. k
+        exports['qb-target']:AddBoxZone(npcId, v.NPC.position, 1, 1, {
+            name = npcId,
+            heading = v.NPC.heading,
+            debugPoly = false,
+            minZ = v.NPC.position.z,
+            maxZ = v.NPC.position.z + 2,
+        }, {
+            options = {
+                {
+                    action = playerBuyTicketMenu,
+                    canInteract = function() return Config.enableGameHouse and not gotTicket end,
+                    icon = "fas fa-dollar-sign",
+                    label = "Buy Ticket",
+                },
+                {
+                    action = returnTicketMenu,
+                    canInteract = function() return Config.enableGameHouse and gotTicket end,
+                    icon = "fas fa-dollar-sign",
+                    label = "Return Ticket",
+                },
+            },
+            distance = 2.5
+        })
 
         if v.blip and v.blip.enable then
             createBlip(v.blip.name, v.blip.blipId, v.blip.position, v.blip)
@@ -82,33 +109,29 @@ Citizen.CreateThread(function()
     end
 end)
 
---create markers for computers
+--create targets for computers
 Citizen.CreateThread(function()
     for k, v in pairs(Config.computerList) do
-        local newPos = v.position - vector3(0, 0, 0.4)
-        local computerMarker = createMarker()
-
-        computerMarker.setKeys({38})
-
-        computerMarker.setRenderDistance(10)
-        computerMarker.setPosition(newPos)
-
-        computerMarker.render()
-
-        computerMarker.setColor(v.markerOptions.color)
-        computerMarker.setScale(v.markerOptions.scale)
-        computerMarker.setType(v.markerType)
-
-        computerMarker.setRotation(v.markerOptions.rotate)
-
-        computerMarker.on('enter', function()
-            showHelpNotification(_U("open_computer"))
-        end)
-        computerMarker.on('leave', function()
-            MenuAPI:CloseAll()
-        end)
-        computerMarker.on('key', function()
-            openComputerMenu(v.computerType, v)
-        end)
+        local computerName = "Computer-" .. k
+        exports['qb-target']:AddBoxZone(computerName, v.position, 1, 1, {
+            name = computerName,
+            debugPoly = false,
+            minZ = v.position.z - 1.5,
+            maxZ = v.position.z + 1,
+        }, {
+            options = {
+                {
+                    action = function() openComputerMenu(v.computerType, v) end,
+                    canInteract = function() return not v.isInGamingHouse or not Config.enableGameHouse or gotTicket end,
+                    icon = "fas fa-gamepad",
+                    label = "Play Games",
+                },
+            },
+            distance = 2.5
+        })
     end
 end)
+
+RegisterNetEvent('d3-arcade:check:ticket', function(computer)
+    openComputerMenu(computer.computerType, computer)
+end) 

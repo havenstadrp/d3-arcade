@@ -22,7 +22,7 @@ RegisterNetEvent('d3-arcade:singleUse', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(source)
     local price = Config.singleUsePrice
-    if Player.Functions.RemoveMoney("cash", price, "arcade") then
+    if not Config.enableGameHouse or Player.Functions.RemoveMoney("cash", price, "arcade") then
         TriggerClientEvent('d3-arcade:check:ticket', src, retrocomputer)
     else
         TriggerClientEvent("d3-arcade:nomoney", source);

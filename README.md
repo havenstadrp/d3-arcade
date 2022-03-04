@@ -38,7 +38,7 @@ the cpu determines how long the initial loading bar lasts<br>
 the gpu determines the resolution of the screen
 
 TODO:
-- [ ] QB-Target integration to allow all arcade machines to work
+- [x] QB-Target integration to allow all arcade machines to work
 - [ ] Freeze Player to allow gamepad use without punching and moving in GTA
 - [ ] Add some animations to show player is using arcade machine / computer
 - [ ] Fix non quick save states (maybe)
@@ -54,4 +54,5 @@ MISC:
 
 Dependencies
 
+QB-Target
 https://github.com/d3st1nyh4x/MenuAPI (fork fixed for large lists)
