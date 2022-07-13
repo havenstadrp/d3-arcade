@@ -25,8 +25,8 @@ Config.Arcade = {
             enable = true,
         },
     },
-            -- GABZ ARCADE!!!!!
-    --[[
+    -- GABZ ARCADE!!!!!
+
     {
         NPC = {
             position = vector3(-1659.14, -1062.72, 11.17),
@@ -42,24 +42,24 @@ Config.Arcade = {
             shortRange = true,
             enable = true,
         },
-    }, 
-            -- FREE ARCADE!!!!! https://forum.cfx.re/t/free-mlo-arcade-bar-interior/4808151
-    {
-        NPC = {
-            position = vector3(-1292.95, -301.69, 35.05),
-            heading = 284.18,
-            model = "g_m_y_strpunk_02",
-        },
-        blip = {
-            position = vector3(-1292.95, -301.69, 36.05),
-            blipId = 521,
-            scale = 1.0,
-            color = 0,
-            name = "Arcade house",
-            shortRange = true,
-            enable = true,
-        },
-    },--]]
+    },
+    -- FREE ARCADE!!!!! https://forum.cfx.re/t/free-mlo-arcade-bar-interior/4808151
+    -- {
+    --     NPC = {
+    --         position = vector3(-1292.95, -301.69, 35.05),
+    --         heading = 284.18,
+    --         model = "g_m_y_strpunk_02",
+    --     },
+    --     blip = {
+    --         position = vector3(-1292.95, -301.69, 36.05),
+    --         blipId = 521,
+    --         scale = 1.0,
+    --         color = 0,
+    --         name = "Arcade house",
+    --         shortRange = true,
+    --         enable = true,
+    --     },
+    -- },
 }
 
 -- "single use" prices to be used on non gamehouse machines (e,g props in houses, etc, via qb-target. check readme.md)
@@ -133,6 +133,10 @@ Config.RetroMachine = {
         link = "http://xogos.robinko.eu/PONG/",
     },
     {
+        name = "Flappy Parrot",
+        link = "http://xogos.robinko.eu/FlappyParrot/",
+    },
+    {
         name = "DOOM",
         link = string.format("nui://d3-arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Doom.zip", "./DOOM.EXE"),
     },
@@ -145,7 +149,7 @@ Config.RetroMachine = {
         link = string.format("nui://d3-arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Wolfenstein3D.zip", "./WOLF3D.EXE"),
     },
     -- emulatorjs powers this second page, it takes in a rom url, a "core" type (eg nes, snes, etc) a game name, and an id for network play (yep! some cores support network play!)
-    -- for more info see : 
+    -- for more info see :
     -- https://github.com/ethanaobrien/emulatorjs/tree/main/docs
     {
         name = "Circus Charlie",
@@ -215,7 +219,7 @@ Config.computerList = {
     -- Gaming computers
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -224,7 +228,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -233,7 +237,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -242,7 +246,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -251,7 +255,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -260,7 +264,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -269,7 +273,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
@@ -278,7 +282,7 @@ Config.computerList = {
     },
     {
         -- if false player dont need a ticket to play on this computer.
-        isInGamingHouse = true,
+        isInGamingHouse = false,
         computerType = Config.GamingMachine,
         computerGPU = Config.GPUList[2],
         computerCPU = Config.CPUList[2],
