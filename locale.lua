@@ -1,5 +1,5 @@
 -- global variable for locales
-Locales = {}
+Locales = {nl}
 
 -- this is for translation
 function _U(str, ...)

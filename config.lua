@@ -1,7 +1,7 @@
 Config = {}
 
 -- Which translation you wish to use ?
-Config.Locale = "en"
+Config.Locale = "nl"
 
 -- Key settings
 Config.keyToOpenTicketMenu = "E"
@@ -77,6 +77,7 @@ Config.ArcadeModels = {
     -538006270,
     398786301,
     -1991361770,
+    -199136770, --gabz map (lifevad
 }
 -- ticket price, and time in arcade.
 Config.ticketPrice = {

@@ -1,4 +1,4 @@
-Locales['en'] = {
+Locales['nl'] = {
 	["ticket_expired"]  = "Je ticket is verlopen.",
 	["time_left_count"] = "Tijd over %.2d:%.2d",
 
