@@ -43,9 +43,9 @@ local retrocomputer = {
 --create npc, blip, marker
 Citizen.CreateThread(function()
     if Config.ArcadeModels ~= nil then
-        local optionLabel = "Play Arcade"
+        local optionLabel = "Arcade Spelen"
         if Config.enableGameHouse then
-            optionLabel = "Play Arcade for $" .. Config.singleUsePrice
+            optionLabel = "Arcade spelen voor €" .. Config.singleUsePrice
         end
         exports['qb-target']:AddTargetModel(Config.ArcadeModels, {
             options = {
@@ -58,7 +58,7 @@ Citizen.CreateThread(function()
                 },
                 {
                     icon = "fas fa-gamepad",
-                    label = "Play Arcade (Ticket)",
+                    label = "Games Spelen (Ticket)",
                     action = function() openComputerMenu(retrocomputer.computerType, retrocomputer) end,
                     canInteract = function() return gotTicket end,
                 },
@@ -80,13 +80,13 @@ Citizen.CreateThread(function()
                     action = playerBuyTicketMenu,
                     canInteract = function() return Config.enableGameHouse and not gotTicket end,
                     icon = "fas fa-dollar-sign",
-                    label = "Buy Ticket",
+                    label = "Koop Ticket",
                 },
                 {
                     action = returnTicketMenu,
                     canInteract = function() return Config.enableGameHouse and gotTicket end,
                     icon = "fas fa-dollar-sign",
-                    label = "Return Ticket",
+                    label = "Ticket terugbrengen",
                 },
             },
             distance = 2.5
@@ -120,7 +120,7 @@ Citizen.CreateThread(function()
                     action = function() openComputerMenu(v.computerType, v) end,
                     canInteract = function() return not v.isInGamingHouse or not Config.enableGameHouse or gotTicket end,
                     icon = "fas fa-gamepad",
-                    label = "Play Games",
+                    label = "Games Spelen",
                 },
             },
             distance = 2.5
